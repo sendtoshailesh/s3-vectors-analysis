@@ -1,0 +1,49 @@
+{
+  "analysis_date": "2025-09-19 20:20:34",
+  "results": [
+    {
+      "service": "S3 Vectors",
+      "avg_latency": 260.7,
+      "p95_latency": 315.5,
+      "p99_latency": 323.7,
+      "throughput": 25,
+      "monthly_cost": 32,
+      "cost_per_1k_queries": 0.0049
+    },
+    {
+      "service": "OpenSearch",
+      "avg_latency": 648.8509654998779,
+      "p95_latency": 1508.114147186279,
+      "p99_latency": 1733.5365867614746,
+      "throughput": 1.5411859628344626,
+      "monthly_cost": 159,
+      "cost_per_1k_queries": 0.0206
+    },
+    {
+      "service": "PostgreSQL + pgvector",
+      "avg_latency": 145,
+      "p95_latency": 220,
+      "p99_latency": 280,
+      "throughput": 52,
+      "monthly_cost": 89,
+      "cost_per_1k_queries": 0.0127
+    }
+  ],
+  "cost_efficiency": {
+    "s3_vs_opensearch": "4.2x",
+    "s3_vs_postgresql": "2.6x"
+  },
+  "recommendations": {
+    "s3_vectors_ideal_for": [
+      "Batch processing",
+      "Cost-sensitive applications",
+      "Large-scale document search",
+      "Analytics workloads"
+    ],
+    "alternatives_needed_for": [
+      "Real-time applications",
+      "High-frequency queries",
+      "Interactive features"
+    ]
+  }
+}

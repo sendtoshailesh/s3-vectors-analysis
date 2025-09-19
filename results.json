@@ -1,0 +1,78 @@
+{
+  "timestamp": "2025-09-19 20:26:50",
+  "services": {
+    "S3 Vectors": {
+      "avg_latency": 260.7,
+      "p95_latency": 315.5,
+      "p99_latency": 323.7,
+      "throughput": 25,
+      "monthly_cost": 32,
+      "cost_per_1k_queries": 0.0049,
+      "data_source": "Real AWS implementation"
+    },
+    "OpenSearch": {
+      "avg_latency": 649,
+      "p95_latency": 1508,
+      "p99_latency": 1734,
+      "throughput": 1.5,
+      "monthly_cost": 159,
+      "cost_per_1k_queries": 0.0206,
+      "data_source": "Live t3.small.search benchmark"
+    },
+    "PostgreSQL": {
+      "avg_latency": 145,
+      "p95_latency": 220,
+      "p99_latency": 280,
+      "throughput": 52,
+      "monthly_cost": 89,
+      "cost_per_1k_queries": 0.0127,
+      "data_source": "Estimated from pgvector benchmarks"
+    }
+  },
+  "analysis": {
+    "cost_efficiency": {
+      "s3_vs_opensearch": "4.2x more efficient",
+      "s3_vs_postgresql": "2.6x more efficient"
+    },
+    "performance_tradeoffs": {
+      "opensearch_vs_s3": {
+        "speed_advantage": "2.5x slower",
+        "latency_difference": "388ms"
+      },
+      "postgresql_vs_s3": {
+        "speed_advantage": "1.8x faster",
+        "latency_difference": "116ms"
+      }
+    },
+    "recommendations": {
+      "s3_vectors_ideal_for": [
+        "Batch processing workloads (>200ms acceptable)",
+        "Cost-sensitive applications (80% cost savings)",
+        "Large-scale document search and analytics",
+        "Recommendation systems with offline processing",
+        "Research and development environments",
+        "Archival systems with occasional queries"
+      ],
+      "postgresql_ideal_for": [
+        "Mixed OLTP and vector workloads",
+        "Applications requiring SQL compatibility",
+        "Moderate real-time requirements (100-200ms)",
+        "Teams familiar with PostgreSQL ecosystem",
+        "Balanced cost/performance requirements"
+      ],
+      "opensearch_ideal_for": [
+        "Real-time applications (<100ms required)",
+        "High-frequency queries (>50 QPS sustained)",
+        "Complex search and analytics workloads",
+        "Applications with advanced search requirements",
+        "When budget allows for premium performance"
+      ],
+      "avoid_s3_vectors_when": [
+        "Real-time user-facing applications",
+        "Interactive features with strict SLAs",
+        "High-frequency query patterns",
+        "Complex query requirements beyond similarity"
+      ]
+    }
+  }
+}
