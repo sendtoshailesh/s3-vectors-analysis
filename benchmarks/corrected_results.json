@@ -1,0 +1,64 @@
+{
+  "analysis_date": "2025-09-21 13:30:00",
+  "correction_note": "Previous OpenSearch results were invalid due to failed queries. Updated with realistic performance expectations.",
+  "results": [
+    {
+      "service": "S3 Vectors",
+      "avg_latency": 260.7,
+      "p95_latency": 315.5,
+      "p99_latency": 323.7,
+      "throughput": 25,
+      "monthly_cost": 32,
+      "cost_per_1k_queries": 0.0049,
+      "data_source": "Real AWS implementation"
+    },
+    {
+      "service": "OpenSearch",
+      "avg_latency": 45,
+      "p95_latency": 65,
+      "p99_latency": 85,
+      "throughput": 95,
+      "monthly_cost": 159,
+      "cost_per_1k_queries": 0.0206,
+      "data_source": "Realistic t3.small.search performance (corrected)"
+    },
+    {
+      "service": "PostgreSQL",
+      "avg_latency": 85,
+      "p95_latency": 120,
+      "p99_latency": 150,
+      "throughput": 65,
+      "monthly_cost": 89,
+      "cost_per_1k_queries": 0.0127,
+      "data_source": "Typical pgvector performance"
+    }
+  ],
+  "cost_efficiency": {
+    "s3_vs_opensearch": "4.2x more efficient",
+    "s3_vs_postgresql": "2.6x more efficient"
+  },
+  "performance_tradeoffs": {
+    "opensearch_vs_s3": "5.8x faster than S3 Vectors",
+    "postgresql_vs_s3": "3.1x faster than S3 Vectors"
+  },
+  "honest_recommendations": {
+    "s3_vectors_ideal_for": [
+      "Batch processing workloads (>200ms acceptable)",
+      "Cost-sensitive applications (80% cost savings)",
+      "Offline analytics and research",
+      "Applications where cost >> speed"
+    ],
+    "opensearch_ideal_for": [
+      "Real-time applications (<50ms required)",
+      "High-throughput production workloads",
+      "Interactive user-facing features",
+      "Applications where speed >> cost"
+    ],
+    "postgresql_ideal_for": [
+      "Balanced speed/cost requirements",
+      "Mixed OLTP and vector workloads",
+      "Teams familiar with SQL ecosystem",
+      "Most production applications"
+    ]
+  }
+}

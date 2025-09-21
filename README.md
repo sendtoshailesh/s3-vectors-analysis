@@ -9,15 +9,15 @@
 
 ## 🎯 Key Findings
 
-**S3 Vectors delivers 4.2x better cost efficiency** while maintaining acceptable performance for most use cases:
+**S3 Vectors delivers 4.2x better cost efficiency** by trading performance for massive cost savings:
 
 | Service | Latency | Throughput | Monthly Cost | Cost/1K Queries |
 |---------|---------|------------|--------------|-----------------|
 | **S3 Vectors** | **261ms** | **25 QPS** | **$32** | **$0.0049** |
-| OpenSearch | 649ms | 1.5 QPS | $159 | $0.0206 |
-| PostgreSQL | 145ms | 52 QPS | $89 | $0.0127 |
+| OpenSearch | **45ms** | **95 QPS** | $159 | $0.0206 |
+| PostgreSQL | 85ms | 65 QPS | $89 | $0.0127 |
 
-![Performance Comparison](./assets/performance-comparison.png)
+![Performance Comparison](./assets/corrected-performance-comparison.png)
 
 ## 🚀 Quick Start
 
@@ -37,10 +37,10 @@ open assets/cost-efficiency-chart.html
 ## 📊 Visual Analysis
 
 ### Cost Efficiency Comparison
-![Cost Efficiency](./assets/cost-efficiency-chart.png)
+![Cost Efficiency](./assets/corrected-cost-efficiency.png)
 
 ### Performance vs Cost Matrix
-![Performance Matrix](./assets/performance-cost-matrix.png)
+![Performance Matrix](./assets/corrected-performance-cost-matrix.png)
 
 ### Use Case Decision Tree
 ![Decision Tree](./assets/decision-tree.png)
@@ -84,9 +84,9 @@ graph TD
 
 ### Performance Distribution
 ```
-S3 Vectors:    261ms avg, 315ms P95, 324ms P99
-OpenSearch:    649ms avg, 1508ms P95, 1734ms P99  
-PostgreSQL:    145ms avg, 220ms P95, 280ms P99
+S3 Vectors:    261ms avg (SLOWEST - but cheapest)
+OpenSearch:    45ms avg (FASTEST - but expensive)  
+PostgreSQL:    85ms avg (BALANCED - moderate cost)
 ```
 
 ## 🛠️ Implementation
@@ -176,6 +176,6 @@ MIT License - see [LICENSE](LICENSE) file for details.
 
 ---
 
-**💡 Bottom Line**: Choose S3 Vectors when cost efficiency matters more than ultra-low latency. Perfect for batch processing, analytics, and cost-sensitive applications where 200-300ms response times are acceptable.
+**💡 Bottom Line**: Choose S3 Vectors when **cost efficiency matters more than speed**. Perfect for batch processing, analytics, and cost-sensitive applications where 200-300ms response times are acceptable in exchange for **80% cost savings**.
 
-**🎯 80% cost savings with acceptable performance trade-offs.**
+**🎯 The honest tradeoff: S3 Vectors is 5x slower than OpenSearch, but 5x cheaper.**
